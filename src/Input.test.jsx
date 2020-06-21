@@ -36,8 +36,9 @@ describe('Input', () => {
       expect(handleClick).toBeCalled();
     });
   });
+
   context('when click button', () => {
-    it('click add button', () => {
+    it('add new task', () => {
       const handleChange = jest.fn();
       const handleClick = jest.fn();
 

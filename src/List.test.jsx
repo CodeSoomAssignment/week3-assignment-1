@@ -21,6 +21,7 @@ describe('List', () => {
       expect(container).toHaveTextContent('할 일이 없어요!');
     });
   });
+
   context('when has tasks', () => {
     it('renders task lists', () => {
       const tasks = [

@@ -29,6 +29,7 @@ describe('Page', () => {
       expect(container).toHaveTextContent('할 일이 없어요!');
     });
   });
+
   context('When has tasks', () => {
     it('renders List component', () => {
       const tasks = [

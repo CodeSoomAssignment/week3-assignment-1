@@ -19,16 +19,18 @@ describe('App', () => {
     const { getByPlaceholderText } = render((
       <App />
     ));
+
     const input = getByPlaceholderText('할 일을 입력해 주세요');
-    expect(input).toBeEnabled();
     fireEvent.change(input, { target: { value: 'something' } });
     expect(input.value).toBe('something');
   });
-  context('when click functions', () => {
-    it('handle click add task', () => {
+
+  context('when click additional buttons', () => {
+    it('add new task', () => {
       const { container, getByPlaceholderText, getByText } = render((
         <App />
       ));
+
       const input = getByPlaceholderText('할 일을 입력해 주세요');
       fireEvent.change(input, { target: { value: 'something' } });
 
@@ -39,10 +41,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('something');
       expect(container).toHaveTextContent('완료');
     });
-    it('handle click delete task', () => {
+
+    it('delete task', () => {
       const { container, getByPlaceholderText, getByText } = render((
         <App />
       ));
+
       const input = getByPlaceholderText('할 일을 입력해 주세요');
       fireEvent.change(input, { target: { value: 'something' } });
       const addButton = getByText('추가');
@@ -51,6 +55,7 @@ describe('App', () => {
       const completeButton = getByText('완료');
       expect(completeButton).toBeEnabled();
       fireEvent.click(completeButton);
+      expect(container).not.toHaveTextContent('완료');
       expect(container).not.toHaveTextContent('something');
       expect(container).toHaveTextContent('할 일이 없어요!');
     });
